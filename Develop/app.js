@@ -10,11 +10,13 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const { callbackify } = require("util");
+const Employee = require("./lib/Employee");
 
 var team = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
  const promptUser = () =>
+ //i copied this from the class-activities...
 inquirer
 .prompt([
     {
@@ -42,19 +44,19 @@ inquirer
         type: 'input',
         message: 'What is your Alma Mater? or if current school if currently enrolled.',
         name: 'school',
-        when: (answer) => answer.title === "Intern",
+        when: (list) => list.title === "Intern",
     },
     {
         type: 'input',
         message: "What is your github?",
         name: 'github',
-        when: (answer) => answer.title === "Engineer"
+        when: (list) => list.title === "Engineer"
     },
     {
         type: 'input',
         message: 'What is your office Number?',
         name: 'officeNumber',
-        when: (answer) => answer.title === "Manager",
+        when: (list) => list.title === "Manager",
     },
     {
         type: 'list',
@@ -63,20 +65,34 @@ inquirer
         name: 'extraworker',
     }
  ]).then(data => {
+     //this portion came from the little RPG game we made...i just subsituted the HP and all that for manages etc.
      if (data.title === "Manager") {
          const manager = new Manager (data.name, data.id, data.email, data.officeNumber);
          team.push(manager);
-         console.log(manager)
+        //  console.log(team)
      }
+     if (data.title === "Engineer") {
+         const engineer = new Engineer (data.name, data.id, data.email, data.github);
+         team.push(engineer);//tito helped me with this part...i was using team.append not team.push :/
+        //  console.log(team);
+     }
+     if (data.title === "Intern") {
+        const intern = new Intern (data.name, data.id, data.email, data.school);
+        team.push(intern);
+        console.log(team);
+    }
      if (data.extraworker === "yes" ) {
          return promptUser();
-     }
+     }//copied from activity 28-Stu_Mini_project
+    var myFile = render(team);
+   fs.writeFile("output.html", (myFile), (err) => 
+   err ? console.log(err) : console.log('Sucess!')
+   );
  })
  
  promptUser();
- 
- 
- 
+
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
