@@ -7,6 +7,7 @@ const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
+//i couldnt figure out out to use output path and output_dir
 
 const render = require("./lib/htmlRenderer");
 const { callbackify } = require("util");
@@ -19,14 +20,15 @@ var team = [];
  //i copied this from the class activities...i just changed the
 inquirer
 .prompt([
-  
+  //the list of questions asked by the prompt
     {
         type: 'list',
         name: 'title',
         message: 'What is your title for this project?',
         choices: ["Manager", "Engineer", "Intern"]
     }, 
-     {
+    
+    {
         type: 'input',
         name: 'name',
         message: 'What is your name?',
@@ -45,19 +47,19 @@ inquirer
         type: 'input',
         message: 'What is your Alma Mater? or if current school if currently enrolled.',
         name: 'school',
-        when: (list) => list.title === "Intern",//from the MDN resources...when acts like a boolean...so the question named title equals intern it will ask this quesiton
+        when: function ( list ) { return list.title === "Intern"},//from the MDN resources...when acts like a boolean...so the question named title equals intern it will ask this quesiton
     },
     {
         type: 'input',
         message: "What is your github?",
         name: 'github',
-        when: (list) => list.title === "Engineer"//i tried using an normal function but it didnt work. 
+        when: function ( list ) { return list.title === "Engineer"}//i tried using an normal function but it didnt work. 
     },
     {
         type: 'input',
         message: 'What is your office Number?',
         name: 'officeNumber',
-        when: (list) => list.title === "Manager",
+        when: function ( list ) { return list.title === "Manager"},
     },
     {
         type: 'list',
