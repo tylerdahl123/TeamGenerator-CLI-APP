@@ -66,21 +66,22 @@ inquirer
     }
  ]).then(data => {
      //this portion came from the little RPG game we made...i just subsituted the HP and all that for manages etc.
+     
+     if (data.title === "Intern") {
+        const intern = new Intern (data.name, data.id, data.email, data.school);
+        team.push(intern);
+        console.log(team);
+    } 
+    if (data.title === "Engineer") {
+         const engineer = new Engineer (data.name, data.id, data.email, data.github);
+         team.push(engineer);//tito helped me with this part...i was using team.append not team.push :/
+        //  console.log(team);
+     }
      if (data.title === "Manager") {
          const manager = new Manager (data.name, data.id, data.email, data.officeNumber);
          team.push(manager);
         //  console.log(team)
      }
-     if (data.title === "Engineer") {
-         const engineer = new Engineer (data.name, data.id, data.email, data.github);
-         team.push(engineer);//tito helped me with this part...i was using team.append not team.push :/
-        //  console.log(team);
-     }
-     if (data.title === "Intern") {
-        const intern = new Intern (data.name, data.id, data.email, data.school);
-        team.push(intern);
-        console.log(team);
-    }
      if (data.extraworker === "yes" ) {
          return promptUser();
      }//copied from activity 28-Stu_Mini_project and got help in class from bryan. 
