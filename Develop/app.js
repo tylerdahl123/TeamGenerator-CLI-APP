@@ -16,7 +16,7 @@ var team = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
  const promptUser = () =>
- //i copied this from the class-activities...
+ //i copied this from the class activities...i just changed the values.
 inquirer
 .prompt([
     {
