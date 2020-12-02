@@ -70,7 +70,7 @@ inquirer
      if (data.title === "Intern") {
         const intern = new Intern (data.name, data.id, data.email, data.school);
         team.push(intern);
-        console.log(team);
+        // console.log(team);
     } 
     if (data.title === "Engineer") {
          const engineer = new Engineer (data.name, data.id, data.email, data.github);
@@ -80,7 +80,7 @@ inquirer
      if (data.title === "Manager") {
          const manager = new Manager (data.name, data.id, data.email, data.officeNumber);
          team.push(manager);
-        //  console.log(team)
+        console.log(team)
      }
      if (data.extraworker === "yes" ) {
          return promptUser();
