@@ -16,19 +16,20 @@ var team = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
  const promptUser = () =>
- //i copied this from the class activities...i just changed the values.
+ //i copied this from the class activities...i just changed the
 inquirer
 .prompt([
-    {
-        type: 'input',
-        name: 'name',
-        message: 'What is your name?',
-    },
+  
     {
         type: 'list',
         name: 'title',
-        message: 'what is your title for this project?',
+        message: 'What is your title for this project?',
         choices: ["Manager", "Engineer", "Intern"]
+    }, 
+     {
+        type: 'input',
+        name: 'name',
+        message: 'What is your name?',
     },
     {
         type: 'input',
@@ -50,7 +51,7 @@ inquirer
         type: 'input',
         message: "What is your github?",
         name: 'github',
-        when: (list) => list.title === "Engineer"
+        when: (list) => list.title === "Engineer"//i tried using an normal function but it didnt work. 
     },
     {
         type: 'input',
