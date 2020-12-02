@@ -3,6 +3,7 @@
 # TeamGenerator-CLI-APP
 ## Description
  ---
+ ![GIF OF USE](https://drive.google.com/file/d/1yuCIC23_Z_GcKZ9kKE0h35WoCitGrTr8/preview)
  
  For this project the user will be able to create a roster for a development team using a command line interface.
 ## Install 

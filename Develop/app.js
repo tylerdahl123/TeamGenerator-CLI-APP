@@ -44,7 +44,7 @@ inquirer
         type: 'input',
         message: 'What is your Alma Mater? or if current school if currently enrolled.',
         name: 'school',
-        when: (list) => list.title === "Intern",
+        when: (list) => list.title === "Intern",//from the MDN resources...when acts like a boolean...so the question named title equals intern it will ask this quesiton
     },
     {
         type: 'input',
